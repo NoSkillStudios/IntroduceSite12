@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka Bilgilendirme</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f3f4f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #4e54c8;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 0 10px;
+            font-size: 1em;
+            transition: background 0.3s, border-radius 0.3s;
+        }
+
+        nav a:hover {
+            background: #5a67d8;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            color: #4e54c8;
+            border-bottom: 3px solid #4e54c8;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .mathy {
+            background: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .mathy h3 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        .chat-container {
+            margin-top: 20px;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .chat-button {
+            padding: 10px 15px;
+            background-color: #4e54c8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .chat-button:hover {
+            background-color: #5a67d8;
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f3f4f7;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yapay Zeka Bilgilendirme Sitesi</h1>
+    </header>
+
+    <nav>
+        <a href="#hakkinda">Hakkında</a>
+        <a href="#teknolojiler">Teknolojiler</a>
+        <a href="#uygulamalar">Uygulamalar</a>
+        <a href="#mathy">Mathy</a>
+        <a href="#iletisim">İletişim</a>
+    </nav>
+
+    <div class="container">
+        <div id="hakkinda" class="section">
+            <h2>Yapay Zeka Nedir?</h2>
+            <p>
+                Yapay zeka (YZ), makinelerin insanlar gibi düşünme ve problem çözme yeteneklerini simüle edebilmesini sağlayan bir bilim dalıdır. 
+                Yapay zeka, makine öğrenmesi, derin öğrenme, doğal dil işleme gibi birçok alt dalı içerir ve günümüzde sağlık, finans, eğitim gibi 
+                birçok sektörde önemli uygulamalara sahiptir.
+            </p>
+        </div>
+
+        <div id="teknolojiler" class="section">
+            <h2>Yapay Zeka Teknolojileri</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Makine Öğrenmesi</h3>
+                    <p>Makine öğrenmesi, makinelerin veriden öğrenmesini sağlayan bir yapay zeka alt dalıdır. Algoritmalar sayesinde sistemler, 
+                    belirli bir görevi yerine getirmek için kendi kendine öğrenebilir.</p>
+                </div>
+                <div class="card">
+                    <h3>Derin Öğrenme</h3>
+                    <p>Derin öğrenme, çok katmanlı sinir ağları kullanarak veriden özellik çıkarımı yapabilen bir makine öğrenmesi tekniğidir. 
+                    Görüntü işleme, konuşma tanıma gibi alanlarda çok etkilidir.</p>
+                </div>
+                <div class="card">
+                    <h3>Doğal Dil İşleme</h3>
+                    <p>Doğal dil işleme (NLP), insanların dilini anlayabilen ve işleyebilen yapay zeka teknolojilerinin genel adıdır. 
+                    Sohbet botları ve çeviri sistemleri gibi uygulamalar NLP'nin ürünleridir.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="uygulamalar" class="section">
+            <h2>Yapay Zeka Uygulamaları</h2>
+            <p>
+                Yapay zeka, sağlık, finans, ulaşım, eğitim gibi birçok alanda yenilikçi çözümler sunmaktadır. Örneğin, sağlık alanında erken teşhis 
+                sistemleri, finans alanında dolandırıcılık tespit sistemleri, ulaşımda otonom araçlar yapay zekanın önemli uygulamalarıdır.
+            </p>
+        </div>
+
+        <div id="mathy" class="section mathy">
+            <h3>Matematik Robotumuzla Tanışın! Mathy</h3>
+            <p>Matematik sorularınızı sormak için aşağıdaki kutucuğu kullanabilirsiniz. Örneğin: "10 + 10" veya "3 ^ 5".</p>
+            <div class="chat-container">
+                <input type="text" id="mathyQuestion" class="chat-input" placeholder="Matematik sorunuzu buraya yazın...">
+                <button class="chat-button" onclick="evaluateExpression()">Sor</button>
+                <div id="mathyResponse" class="response"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="iletisim">
+        <p>© 2024 Yapay Zeka Bilgilendirme. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        function evaluateExpression() {
+            const expression = document.getElementById("mathyQuestion").value;
+            const responseDiv = document.getElementById("mathyResponse");
+            
+            try {
+                // "3 ^ 5" ifadesini JavaScript'in anlayabileceği "Math.pow(3, 5)" formatına çevir
+                const formattedExpression = expression.replace(/(\d+)\s*\^\s*(\d+)/g, 'Math.pow($1, $2)');
+                // Değeri hesapla
+                const result = eval(formattedExpression);
+                responseDiv.innerText = `Sonuç: ${result}`;
+            } catch (error) {
+                responseDiv.innerText = "Geçersiz ifade! Lütfen geçerli bir matematik ifadesi girin.";
+            }
+        }
+    </script>
+</body>
+</html>

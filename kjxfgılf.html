@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka Bilgilendirme</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f3f4f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #4e54c8;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 0 10px;
+            font-size: 1em;
+            transition: background 0.3s, border-radius 0.3s;
+        }
+
+        nav a:hover {
+            background: #5a67d8;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            color: #4e54c8;
+            border-bottom: 3px solid #4e54c8;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yapay Zeka Bilgilendirme Sitesi</h1>
+    </header>
+
+    <nav>
+        <a href="#hakkinda">Hakkında</a>
+        <a href="#teknolojiler">Teknolojiler</a>
+        <a href="#uygulamalar">Uygulamalar</a>
+        <a href="#orneks">Örnekler</a>
+        <a href="#iletisim">İletişim</a>
+    </nav>
+
+    <div class="container">
+        <div id="hakkinda" class="section">
+            <h2>Yapay Zeka Nedir?</h2>
+            <p>
+                Yapay zeka (YZ), makinelerin insanlar gibi düşünme ve problem çözme yeteneklerini simüle edebilmesini sağlayan bir bilim dalıdır. 
+                Yapay zeka, makine öğrenmesi, derin öğrenme, doğal dil işleme gibi birçok alt dalı içerir ve günümüzde sağlık, finans, eğitim gibi 
+                birçok sektörde önemli uygulamalara sahiptir.
+            </p>
+        </div>
+
+        <div id="teknolojiler" class="section">
+            <h2>Yapay Zeka Teknolojileri</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Makine Öğrenmesi</h3>
+                    <p>Makine öğrenmesi, makinelerin veriden öğrenmesini sağlayan bir yapay zeka alt dalıdır. Algoritmalar sayesinde sistemler, 
+                    belirli bir görevi yerine getirmek için kendi kendine öğrenebilir.</p>
+                </div>
+                <div class="card">
+                    <h3>Derin Öğrenme</h3>
+                    <p>Derin öğrenme, çok katmanlı sinir ağları kullanarak veriden özellik çıkarımı yapabilen bir makine öğrenmesi tekniğidir. 
+                    Görüntü işleme, konuşma tanıma gibi alanlarda çok etkilidir.</p>
+                </div>
+                <div class="card">
+                    <h3>Doğal Dil İşleme</h3>
+                    <p>Doğal dil işleme (NLP), insanların dilini anlayabilen ve işleyebilen yapay zeka teknolojilerinin genel adıdır. 
+                    Sohbet botları ve çeviri sistemleri gibi uygulamalar NLP'nin ürünleridir.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="uygulamalar" class="section">
+            <h2>Yapay Zeka Uygulamaları</h2>
+            <p>
+                Yapay zeka, sağlık, finans, ulaşım, eğitim gibi birçok alanda yenilikçi çözümler sunmaktadır. Örneğin, sağlık alanında erken teşhis 
+                sistemleri, finans alanında dolandırıcılık tespit sistemleri, ulaşımda otonom araçlar yapay zekanın önemli uygulamalarıdır.
+            </p>
+        </div>
+
+        <div id="orneks" class="section">
+            <h2>Yapay Zeka Örnekleri</h2>
+            <p>
+                İşte bazı dikkat çekici yapay zeka uygulamaları:
+            </p>
+            <ul>
+                <li>1. **Netflix Öneri Sistemi** - Kullanıcı tercihlerini analiz ederek kişiselleştirilmiş içerik önerir.</li>
+                <li>2. **Google Asistan** - Sesli komutları anlar ve kullanıcıyla etkileşime girer.</li>
+                <li>3. **Tesla Otonom Sürüş** - Araçları kendi kendine sürüş yeteneğine sahiptir.</li>
+                <li>4. **Siri ve Alexa** - Kullanıcı komutlarını algılayarak çeşitli görevleri yerine getirir.</li>
+                <li>5. **Görüntü Tanıma Sistemleri** - Fotoğraflarda yüz tanıma teknolojisi kullanır (Facebook gibi).</li>
+                <li>6. **Spotify Müzik Öneri Algoritması** - Dinleme alışkanlıklarına göre müzik önerir.</li>
+                <li>7. **DeepFake Teknolojisi** - Görüntüleri manipüle ederek gerçekçi sahneler oluşturur.</li>
+                <li>8. **Akıllı Sağlık Sistemleri** - Tıbbi teşhis ve tedavi süreçlerinde yapay zeka kullanılır.</li>
+                <li>9. **ChatGPT gibi Sohbet Botları** - Karmaşık dil işleme ve yanıt oluşturma kapasitesine sahiptir.</li>
+                <li>10. **Dijital Sanat Üretim Araçları** - Görüntüleri ve resimleri analiz ederek sanatsal üretim yapar.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer id="iletisim">
+        <p>© 2024 Yapay Zeka Bilgilendirme. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

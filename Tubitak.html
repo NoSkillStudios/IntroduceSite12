@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka ile İlgili Ne Biliyorsunuz?</title>
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #ff7e5f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--light);
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .header-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .ai-particle {
+            position: absolute;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-list {
+            list-style-type: none;
+            margin: 2rem 0;
+        }
+        
+        .ai-list li {
+            background: white;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-list li:hover {
+            transform: translateX(10px);
+        }
+        
+        .ai-list li img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-right: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .ai-list-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .ai-list-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .animation-container {
+            width: 100%;
+            height: 300px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .neural-network {
+            width: 80%;
+            height: 80%;
+            position: relative;
+        }
+        
+        .layer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .input-layer { left: 0; }
+        .hidden-layer-1 { left: 30%; }
+        .hidden-layer-2 { left: 60%; }
+        .output-layer { right: 0; }
+        
+        .neuron {
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        .connection {
+            position: absolute;
+            background: rgba(110, 72, 170, 0.2);
+            transform-origin: left center;
+            height: 2px;
+            z-index: -1;
+        }
+        
+        .game-container {
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .game-board {
+            display: inline-block;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+        }
+        
+        .game-cell {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #ddd;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .game-cell:hover {
+            background: #f5f5f5;
+        }
+        
+        .game-message {
+            margin: 1rem 0;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(157,80,187,0.2), rgba(157,80,187,0.2));
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: #555;
+        }
+        
+        .tech-bubble {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-bubble:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .tab-container {
+            margin: 2rem 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #666;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            background: white;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="ai-particle" style="width: 10px; height: 10px; top: 20%; left: 15%;"></div>
+        <div class="ai-particle" style="width: 15px; height: 15px; top: 60%; left: 25%; animation-delay: 0.5s;"></div>
+        <div class="ai-particle" style="width: 8px; height: 8px; top: 40%; left: 75%; animation-delay: 1s;"></div>
+        <div class="ai-particle" style="width: 12px; height: 12px; top: 70%; left: 65%; animation-delay: 1.5s;"></div>
+        <div class="ai-particle" style="width: 9px; height: 9px; top: 30%; left: 50%; animation-delay: 2s;"></div>
+        
+        <h1>Yapay Zeka ile İlgili Ne Biliyorsunuz?</h1>
+        <p class="header-subtitle">Yapay zeka dünyasına hoş geldiniz! Burada yapay zeka hakkında her şeyi öğrenebilir, interaktif deneyimler yaşayabilir ve geleceğin teknolojisini keşfedebilirsiniz.</p>
+    </header>
+    
+    <div class="container">
+        <section class="section" id="ai-definition">
+            <h2>Yapay Zeka Nedir?</h2>
+            <p>Yapay Zeka (Artificial Intelligence - AI), <span class="highlight">insan zekasını taklit eden ve öğrenebilen sistemler</span> geliştiren bilgisayar bilimi dalıdır. Bu sistemler, insanlar gibi düşünme, öğrenme, karar verme ve problem çözme yeteneklerine sahiptir.</p>
+            
+            <div class="animation-container">
+                <div class="neural-network">
+                    <div class="layer input-layer">
+                        <div class="neuron" style="animation-delay: 0s;"></div>
+                        <div class="neuron" style="animation-delay: 0.2s;"></div>
+                        <div class="neuron" style="animation-delay: 0.4s;"></div>
+                    </div>
+                    <div class="layer hidden-layer-1">
+                        <div class="neuron" style="animation-delay: 0.1s;"></div>
+                        <div class="neuron" style="animation-delay: 0.3s;"></div>
+                        <div class="neuron" style="animation-delay: 0.5s;"></div>
+                    </div>
+                    <div class="layer hidden-layer-2">
+                        <div class="neuron" style="animation-delay: 0.2s;"></div>
+                        <div class="neuron" style="animation-delay: 0.4s;"></div>
+                    </div>
+                    <div class="layer output-layer">
+                        <div class="neuron" style="animation-delay: 0.3s;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Yapay zeka, <span class="highlight">makine öğrenmesi, derin öğrenme, doğal dil işleme, robotik ve bilgisayarlı görü</span> gibi alt dalları içerir. Günümüzde yapay zeka, sağlık hizmetlerinden finans sektörüne, otomotivden eğlence endüstrisine kadar pek çok alanda kullanılmaktadır.</p>
+            
+            <p class="quote">"Yapay zeka, insanlık tarihinde geliştirilen en önemli teknolojilerden biridir. Ateşi ve elektriği nasıl kontrol etmeyi öğrendiysek, yapay zekayı da kontrol etmeyi öğreneceğiz." - Sundar Pichai (Google CEO)</p>
+        </section>
+        
+        <section class="section" id="ai-usage">
+            <h2>Yapay Zeka Hangi Alanlarda Kullanılır?</h2>
+            <p>Yapay zeka günümüzde hemen hemen tüm sektörlerde kullanılmaktadır. İşte yapay zekanın en yaygın kullanım alanları:</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Sağlık Hizmetleri</h3>
+                        <p>Hastalık teşhisi, ilaç keşfi, kişiselleştirilmiş tedavi planları ve robotik cerrahide yapay zeka kullanılmaktadır.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Finans</h3>
+                        <p>Dolandırıcılık tespiti, algoritmik ticaret, kredi skorlama ve müşteri hizmetleri chatbot'larında yapay zeka kullanılıyor.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Üretim</h3>
+                        <p>Kalite kontrol, öngörücü bakım, tedarik zinciri optimizasyonu ve üretim süreçlerinin otomasyonunda yapay zeka kullanılmaktadır.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Perakende</h3>
+                        <p>Kişiselleştirilmiş öneriler, envanter yönetimi, müşteri davranışı analizi ve sanal alışveriş asistanlarında yapay zeka kullanılıyor.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Ulaşım</h3>
+                        <p>Otonom araçlar, trafik yönetimi sistemleri, rota optimizasyonu ve akıllı şehir uygulamalarında yapay zeka kullanılmaktadır.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Eğitim</h3>
+                        <p>Kişiselleştirilmiş öğrenme, otomatik sınav değerlendirme, akıllı öğrenme sistemleri ve eğitim içeriği oluşturmada yapay zeka kullanılıyor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="ai-technologies">
+            <h2>Yapay Zeka Teknolojileri</h2>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'ml')">Makine Öğrenmesi</button>
+                    <button class="tab-btn" onclick="openTab(event, 'dl')">Derin Öğrenme</button>
+                    <button class="tab-btn" onclick="openTab(event, 'nlp')">Doğal Dil İşleme</button>
+                    <button class="tab-btn" onclick="openTab(event, 'cv')">Bilgisayarlı Görü</button>
+                </div>
+                
+                <div id="ml" class="tab-content active">
+                    <h3>Makine Öğrenmesi (Machine Learning)</h3>
+                    <p>Makine öğrenmesi, <span class="highlight">bilgisayarların verilerden otomatik olarak öğrenmesini ve deneyimlerle gelişmesini</span> sağlayan bir yapay zeka alt dalıdır. Açıkça programlanmadan, verilerdeki modelleri tanıyarak kararlar verebilir veya tahminler yapabilir.</p>
+                    
+                    <p>Makine öğrenmesi üç ana kategoriye ayrılır:</p>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li><strong>Denetimli Öğrenme:</strong> Etiketlenmiş verilerle eğitim yapılır (örneğin, spam e-posta tespiti)</li>
+                        <li><strong>Denetimsiz Öğrenme:</strong> Etiketlenmemiş verilerdeki yapıları keşfetmek için kullanılır (örneğin, müşteri segmentasyonu)</li>
+                        <li><strong>Pekiştirmeli Öğrenme:</strong> Belirli bir ortamda deneme-yanılma yoluyla öğrenme (örneğin, oyun oynayan AI'lar)</li>
+                    </ul>
+                    
+                    <div class="animation-container" style="height: 200px; background: linear-gradient(135deg, #6e48aa, #9d50bb); display: flex; justify-content: center; align-items: center;">
+                        <div style="color: white; text-align: center;">
+                            <h3 style="color: white;">Makine Öğrenmesi Süreci</h3>
+                            <p>Veri Topla → Veriyi Temizle → Modeli Eğit → Modeli Değerlendir → Tahmin Yap</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="dl" class="tab-content">
+                    <h3>Derin Öğrenme (Deep Learning)</h3>
+                    <p>Derin öğrenme, <span class="highlight">insan beynindeki nöron ağlarını taklit eden yapay sinir ağlarını</span> kullanan bir makine öğrenmesi türüdür. Özellikle büyük ve karmaşık veri setleri üzerinde yüksek performans gösterir.</p>
+                    
+                    <p>Derin öğrenmenin en yaygın kullanım alanları:</p>
+                    <div style="margin: 1rem 0;">
+                        <span class="tech-bubble">Görüntü Tanıma</span>
+                        <span class="tech-bubble">Ses Tanıma</span>
+                        <span class="tech-bubble">Doğal Dil İşleme</span>
+                        <span class="tech-bubble">Otonom Araçlar</span>
+                        <span class="tech-bubble">Tıbbi Teşhis</span>
+                    </div>
+                    
+                    <p>Derin öğrenme modelleri, özellikle <span class="highlight">Evrişimli Sinir Ağları (CNN)</span> ve <span class="highlight">Tekrarlayan Sinir Ağları (RNN)</span> gibi mimarilerle bilinir. Bu modeller, geleneksel makine öğrenmesi algoritmalarına göre çok daha fazla veri işleme kapasitesine sahiptir.</p>
+                </div>
+                
+                <div id="nlp" class="tab-content">
+                    <h3>Doğal Dil İşleme (Natural Language Processing - NLP)</h3>
+                    <p>Doğal dil işleme, <span class="highlight">insan dilini anlamak, yorumlamak ve üretmek</span> için bilgisayarların kullanılmasıdır. Günümüzde chatbot'lar, sanal asistanlar, çeviri sistemleri ve duygu analizi gibi uygulamalarda kullanılmaktadır.</p>
+                    
+                    <p>NLP'nin temel görevleri:</p>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li><strong>Metin Sınıflandırması:</strong> Spam tespiti, duygu analizi</li>
+                        <li><strong>Varlık Tanıma:</strong> İsim, yer, kuruluş gibi öğelerin tanınması</li>
+                        <li><strong>Makine Çevirisi:</strong> Bir dilden başka bir dile çeviri</li>
+                        <li><strong>Soru-Cevap Sistemleri:</strong> Kullanıcı sorularına otomatik yanıt verme</li>
+                        <li><strong>Metin Özetleme:</strong> Uzun metinlerin özetini çıkarma</li>
+                    </ul>
+                    
+                    <p>Son yıllarda <span class="highlight">GPT, BERT, Transformer</span> gibi modeller NLP alanında devrim yaratmış, insan benzeri metinler üretebilen sistemler geliştirilmiştir.</p>
+                </div>
+                
+                <div id="cv" class="tab-content">
+                    <h3>Bilgisayarlı Görü (Computer Vision)</h3>
+                    <p>Bilgisayarlı görü, <span class="highlight">bilgisayarların görsel verileri (fotoğraf, video) anlamasını ve yorumlamasını</span> sağlayan yapay zeka dalıdır. Günümüzde yüz tanıma, nesne tespiti, tıbbi görüntüleme ve otonom araçlar gibi alanlarda kullanılmaktadır.</p>
+                    
+                    <p>Bilgisayarlı görünün temel uygulamaları:</p>
+                    <div style="margin: 1rem 0;">
+                        <span class="tech-bubble">Nesne Tanıma</span>
+                        <span class="tech-bubble">Yüz Tanıma</span>
+                        <span class="tech-bubble">Görüntü Sınıflandırma</span>
+                        <span class="tech-bubble">Görüntü Segmentasyonu</span>
+                        <span class="tech-bubble">Poz Tahmini</span>
+                    </div>
+                    
+                    <p>Bilgisayarlı görü sistemleri genellikle <span class="highlight">Evrişimli Sinir Ağları (CNN)</span> kullanır. Bu ağlar, görüntülerdeki hiyerarşik özellikleri otomatik olarak öğrenebilir ve çok yüksek doğruluk oranlarına ulaşabilir.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="ai-concepts">
+            <h2>Yapay Zeka Kavramları</h2>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openConceptTab(event, 'nn')">Yapay Sinir Ağları</button>
+                    <button class="tab-btn" onclick="openConceptTab(event, 'av')">Otonom Araçlar</button>
+                    <button class="tab-btn" onclick="openConceptTab(event, 'agi')">Yapay Genel Zeka</button>
+                    <button class="tab-btn" onclick="openConceptTab(event, 'ethics')">AI Etiği</button>
+                </div>
+                
+                <div id="nn" class="tab-content active">
+                    <h3>Yapay Sinir Ağları (Artificial Neural Networks - ANN)</h3>
+                    <p>Yapay sinir ağları, <span class="highlight">insan beynindeki nöronların çalışma prensibini taklit eden</span> matematiksel modellerdir. Bu ağlar, makine öğrenmesi ve özellikle derin öğrenme alanlarının temelini oluşturur.</p>
+                    
+                    <p>Bir yapay sinir ağı temel olarak üç tür katmandan oluşur:</p>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li><strong>Giriş Katmanı:</strong> Verilerin ağa girdiği katman</li>
+                        <li><strong>Gizli Katman(lar):</strong> Verilerin işlendiği bir veya daha fazla ara katman</li>
+                        <li><strong>Çıkış Katmanı:</strong> Sonuçların üretildiği katman</li>
+                    </ul>
+                    
+                    <p>Sinir ağları, <span class="highlight">aktivasyon fonksiyonları</span> ve <span class="highlight">geri yayılım (backpropagation)</span> gibi tekniklerle öğrenir. Derin öğrenmede ise çok sayıda gizli katman içeren "derin" ağlar kullanılır.</p>
+                </div>
+                
+                <div id="av" class="tab-content">
+                    <h3>Otonom Araçlar (Autonomous Vehicles)</h3>
+                    <p>Otonom araçlar, <span class="highlight">insan müdahalesi olmadan çevresini algılayabilen ve hareket kararları alabilen</span> taşıtlardır. Bu araçlar, yapay zeka, bilgisayarlı görü, sensör füzyonu ve makine öğrenmesi teknolojilerinin birleşimiyle çalışır.</p>
+                    
+                    <p>Otonom araçlar genellikle 5 seviyede sınıflandırılır:</p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Seviye</th>
+                            <th>Açıklama</th>
+                            <th>Örnek</th>
+                        </tr>
+                        <tr>
+                            <td>Seviye 0</td>
+                            <td>Hiçbir otomasyon yok</td>
+                            <td>Geleneksel araçlar</td>
+                        </tr>
+                        <tr>
+                            <td>Seviye 1</td>
+                            <td>Sürücü yardım sistemleri</td>
+                            <td>Hız sabitleyici</td>
+                        </tr>
+                        <tr>
+                            <td>Seviye 2</td>
+                            <td>Kısmi otomasyon</td>
+                            <td>Otomatik şerit takibi</td>
+                        </tr>
+                        <tr>
+                            <td>Seviye 3</td>
+                            <td>Koşullu otomasyon</td>
+                            <td>Belirli koşullarda sürüş</td>
+                        </tr>
+                        <tr>
+                            <td>Seviye 4</td>
+                            <td>Yüksek otomasyon</td>
+                            <td>Çoğu koşulda sürüş</td>
+                        </tr>
+                        <tr>
+                            <td>Seviye 5</td>
+                            <td>Tam otomasyon</td>
+                            <td>İnsan müdahalesi gerekmez</td>
+                        </tr>
+                    </table>
+                    
+                    <p>Otonom araç teknolojisinde Tesla, Waymo (Google), Cruise (GM) ve Argo AI (Ford) gibi şirketler öncülük etmektedir.</p>
+                </div>
+                
+                <div id="agi" class="tab-content">
+                    <h3>Yapay Genel Zeka (Artificial General Intelligence - AGI)</h3>
+                    <p>Yapay genel zeka, <span class="highlight">insan benzeri bir genel zekaya sahip yapay zeka sistemlerini</span> ifade eder. Mevcut yapay zeka sistemlerinin aksine (dar AI), AGI herhangi bir entelektüel görevi insanlar gibi veya daha iyi şekilde gerçekleştirebilir.</p>
+                    
+                    <p>AGI'nin temel özellikleri:</p>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li><strong>Genelleme Yeteneği:</strong> Öğrendiklerini farklı alanlara uygulayabilme</li>
+                        <li><strong>Bağlam Anlayışı:</strong> Durumsal farkındalık ve uyum sağlama</li>
+                        <li><strong>Öz-farkındalık:</strong> Kendi varlığının ve sınırlarının bilincinde olma</li>
+                        <li><strong>Yaratıcılık:</strong> Orijinal fikirler ve çözümler üretebilme</li>
+                    </ul>
+                    
+                    <p>AGI henüz gerçekleştirilememiş olsa da, araştırmacılar bu alanda çalışmalarını sürdürmektedir. AGI'nin geliştirilmesi, insanlık için hem büyük fırsatlar hem de riskler taşımaktadır.</p>
+                </div>
+                
+                <div id="ethics" class="tab-content">
+                    <h3>Yapay Zeka Etiği</h3>
+                    <p>Yapay zeka etiği, <span class="highlight">AI sistemlerinin geliştirilmesi ve kullanımı sırasında ortaya çıkan ahlaki sorunları</span> ele alan bir disiplindir. AI'nın giderek daha fazla hayatımıza girmesiyle, etik konular büyük önem kazanmıştır.</p>
+                    
+                    <p>Yapay zeka etiğinin temel konuları:</p>
+                    <div style="margin: 1rem 0;">
+                        <span class="tech-bubble">Önyargı ve Adalet</span>
+                        <span class="tech-bubble">Şeffaflık</span>
+                        <span class="tech-bubble">Gizlilik</span>
+                        <span class="tech-bubble">Sorumluluk</span>
+                        <span class="tech-bubble">İşsizlik</span>
+                        <span class="tech-bubble">Güvenlik</span>
+                    </div>
+                    
+                    <p>AI etiği alanında çalışan kuruluşlar (OpenAI, Partnership on AI, IEEE) çeşitli ilkeler ve yönergeler geliştirmektedir. Bunlar arasında AI'nın insanlığın yararına kullanılması, önyargılardan arındırılması ve şeffaf olması gibi prensipler yer alır.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="ai-human">
+            <h2>Yapay Zeka İnsan Benzeri Zekaya Sahip Olabilir mi?</h2>
+            <p>Bu soru, yapay zeka araştırmalarının en temel ve tartışmalı konularından biridir. Cevap, "insan benzeri zeka"nın nasıl tanımlandığına bağlıdır.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Zayıf Yapay Zeka (Narrow AI)</h3>
+                        <p>Günümüzde var olan tüm yapay zeka sistemleri "zayıf AI" kategorisine girer. Bunlar belirli görevlerde insanlardan daha iyi performans gösterebilir ancak genel zekadan yoksundur.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Güçlü Yapay Zeka (General AI)</h3>
+                        <p>Henüz var olmayan, ancak teorik olarak mümkün olduğu düşünülen bu AI türü, insan gibi düşünebilir, öğrenebilir ve farklı alanlarda problem çözebilir.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Süper Zeka (Superintelligence)</h3>
+                        <p>Nick Bostrom gibi düşünürler tarafından tanımlanan bu kavram, insan zekasını her alanda geride bırakan bir yapay zekayı ifade eder. Bu tür bir AI'nın ne zaman veya nasıl ortaya çıkacağı belirsizdir.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Yapay zekanın insan benzeri zekaya ulaşması için aşılması gereken temel zorluklar:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li><strong>Bilinç:</strong> AI'nın gerçekten bilinçli olup olamayacağı felsefi bir tartışma konusudur.</li>
+                <li><strong>Duygusal Zeka:</strong> İnsanlar gibi duyguları anlama ve ifade etme yeteneği.</li>
+                <li><strong>Yaratıcılık:</strong> Gerçek anlamda orijinal fikirler üretebilme.</li>
+                <li><strong>Ortak Duyu:</strong> İnsanların sahip olduğu temel dünya bilgisi ve sezgisel anlayış.</li>
+            </ul>
+            
+            <p>Bazı uzmanlar (Ray Kurzweil gibi), <span class="highlight">2045 yılı civarında Tekillik (Singularity) noktasına ulaşılacağını</span> ve yapay zekanın insan zekasını geride bırakacağını öngörmektedir. Ancak bu görüş, bilim camiasında genel kabul görmemektedir.</p>
+            
+            <p class="quote">"Yapay genel zekanın geliştirilmesi insanlık tarihindeki en önemli olay olacaktır. Aynı zamanda, eğer doğru yönetilmezse, en tehlikeli olay da olabilir." - Stephen Hawking</p>
+        </section>
+        
+        <section class="section" id="ai-list">
+            <h2>Bilinen Yapay Zeka Sistemleri</h2>
+            <p>Günümüzde aktif olarak kullanılan ve geliştirilen önemli yapay zeka sistemleri:</p>
+            
+            <ul class="ai-list">
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1200px-OpenAI_Logo.svg.png" alt="ChatGPT">
+                    <div class="ai-list-info">
+                        <h3>ChatGPT (OpenAI)</h3>
+                        <p>GPT-4 mimarisi ile çalışan gelişmiş bir sohbet botu. Doğal dil işleme ve metin üretme konusunda oldukça başarılı.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_Bard_logo.svg/1024px-Google_Bard_logo.svg.png" alt="Bard">
+                    <div class="ai-list-info">
+                        <h3>Google Bard (Google)</h3>
+                        <p>Google'ın geliştirdiği, LaMDA dil modelini kullanan sohbet tabanlı yapay zeka asistanı.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png" alt="Azure AI">
+                    <div class="ai-list-info">
+                        <h3>Microsoft Azure AI</h3>
+                        <p>Microsoft'un bulut tabanlı yapay zeka hizmetleri paketi. Makine öğrenmesi, bilişsel hizmetler ve bot framework içerir.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Watson_Logo.png/800px-Watson_Logo.png" alt="Watson">
+                    <div class="ai-list-info">
+                        <h3>IBM Watson</h3>
+                        <p>IBM'in geliştirdiği, özellikle iş dünyasına yönelik çözümler sunan yapay zeka platformu.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tesla_Motors.svg/1200px-Tesla_Motors.svg.png" alt="Tesla AI">
+                    <div class="ai-list-info">
+                        <h3>Tesla Autopilot</h3>
+                        <p>Tesla'nın otonom sürüş sistemleri için geliştirdiği yapay zeka. Bilgisayarlı görü ve derin öğrenme kullanır.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/DeepMind_logo.png/800px-DeepMind_logo.png" alt="DeepMind">
+                    <div class="ai-list-info">
+                        <h3>DeepMind (Google)</h3>
+                        <p>AlphaGo, AlphaFold gibi çığır açan yapay zeka sistemleri geliştiren araştırma laboratuvarı.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section" id="ai-game">
+            <h2>Yapay Zeka Oyunu</h2>
+            <p>Aşağıdaki basit oyunla yapay zekanın nasıl öğrendiğini deneyimleyebilirsiniz. Bu, pekiştirmeli öğrenme (reinforcement learning) kavramının basitleştirilmiş bir örneğidir.</p>
+            
+            <div class="game-container">
+                <h3>Yapay Zeka ile Taş-Kağıt-Makas</h3>
+                <p>Yapay zeka, oyun ilerledikçe sizin hamlelerinizi öğrenerek daha iyi tahminler yapacaktır.</p>
+                
+                <div class="game-board">
+                    <div style="display: flex; justify-content: space-around; margin-bottom: 1rem;">
+                        <button class="btn" onclick="playGame('rock')">Taş</button>
+                        <button class="btn" onclick="playGame('paper')">Kağıt</button>
+                        <button class="btn" onclick="playGame('scissors')">Makas</button>
+                    </div>
+                    
+                    <div id="game-result" class="game-message">Bir seçim yaparak oyuna başlayın!</div>
+                    <div id="ai-learning" style="font-size: 0.9rem; color: #666;">Yapay zeka henüz öğreniyor...</div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <p>Skor: <span id="player-score">0</span> - <span id="ai-score">0</span></p>
+                        <button class="btn" onclick="resetGame()" style="background: #666; margin-top: 0.5rem;">Oyunu Sıfırla</button>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Bu basit oyunda yapay zeka, <span class="highlight">Markov karar süreci</span> adı verilen bir teknik kullanarak sizin hamlelerinizdeki desenleri öğrenir. Gerçek dünyadaki yapay zeka sistemleri de benzer şekilde, ancak çok daha karmaşık algoritmalarla öğrenir.</p>
+        </section>
+        
+        <section class="section" id="ai-future">
+            <h2>Yapay Zekanın Geleceği</h2>
+            <p>Yapay zeka teknolojisi hızla gelişmeye devam ederken, gelecekte bizi nelerin beklediğine dair bazı öngörüler:</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Kişiselleştirilmiş Tıp</h3>
+                        <p>AI, genetik bilgilerimize ve yaşam tarzımıza göre kişiselleştirilmiş tedaviler geliştirecek.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Akıllı Şehirler</h3>
+                        <p>Yapay zeka, trafikten enerji yönetimine kadar şehirlerin tüm işleyişini optimize edecek.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Eğitimde Devrim</h3>
+                        <p>Her öğrenciye özel, adaptif öğrenme sistemleri eğitimi kökten değiştirecek.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Yapay zekanın geleceği hakkında dikkate alınması gereken bazı önemli noktalar:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li><strong>İş Gücü Dönüşümü:</strong> Birçok meslek ortadan kalkarken, yeni meslekler doğacak.</li>
+                <li><strong>Etik ve Düzenleme:</strong> AI'nın sorumlu kullanımı için küresel standartlar geliştirilecek.</li>
+                <li><strong>Güvenlik:</strong> Siber güvenlik ve AI'nın kötüye kullanımını önleme sistemleri kritik önem taşıyacak.</li>
+                <li><strong>İnsan-AI İşbirliği:</strong> İnsanlar ve AI sistemleri birlikte çalışarak daha yaratıcı çözümler üretecek.</li>
+            </ul>
+            
+            <p class="quote">"Yapay zeka, insanlığın karşılaştığı en büyük fırsatlardan biridir. Ancak aynı zamanda, en büyük zorluklardan biri olma potansiyeline de sahiptir. Doğru yönetilirse, insanlığın karşılaştığı en büyük sorunların çözümüne yardımcı olabilir." - Mustafa Süleyman (DeepMind Kurucu Ortağı)</p>
+        </section>
+        
+        <section class="section" id="ai-resources">
+            <h2>Yapay Zeka Öğrenmek İçin Kaynaklar</h2>
+            <p>Yapay zeka alanında kendinizi geliştirmek istiyorsanız, aşağıdaki kaynaklardan yararlanabilirsiniz:</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Online Kurslar</h3>
+                        <p>Coursera, edX, Udacity gibi platformlarda yapay zeka ve makine öğrenmesi kursları.</p>
+                        <a href="#" class="btn">Keşfet</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Kitaplar</h3>
+                        <p>"Artificial Intelligence: A Modern Approach", "Deep Learning", "Hands-On Machine Learning" gibi temel eserler.</p>
+                        <a href="#" class="btn">Keşfet</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="card-content">
+                        <h3>Açık Kaynak Projeler</h3>
+                        <p>GitHub'da TensorFlow, PyTorch, Keras gibi framework'lerle geliştirilen projeler.</p>
+                        <a href="#" class="btn">Keşfet</a>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem;">Yapay zeka öğrenmeye başlamak için temel adımlar:</p>
+            <ol style="margin: 1rem 0 1rem 2rem;">
+                <li><strong>Matematik Temeli:</strong> Lineer cebir, istatistik ve calculus bilgisi edinin.</li>
+                <li><strong>Programlama:</strong> Python öğrenin ve NumPy, Pandas gibi kütüphanelere hakim olun.</li>
+                <li><strong>Makine Öğrenmesi:</strong> Temel algoritmaları ve kavramları öğrenin.</li>
+                <li><strong>Derin Öğrenme:</strong> Sinir ağları ve modern mimariler üzerine çalışın.</li>
+                <li><strong>Uygulama:</strong> Kendi projelerinizi geliştirerek deneyim kazanın.</li>
+            </ol>
+        </section>
+    </div>
+    
+    <footer>
+        <h2>Yapay Zeka Dünyasını Keşfetmeye Devam Edin</h2>
+        <p style="max-width: 800px; margin: 1rem auto; opacity: 0.8;">Yapay zeka teknolojisi her geçen gün gelişmeye devam ediyor. Bu heyecan verici yolculukta bilgilenmeye ve öğrenmeye devam edin. Unutmayın, geleceği şekillendirecek olan sizlersiniz.</p>
+        <p style="margin-top: 2rem;">© 2023 Yapay Zeka Portalı - Tüm Hakları Saklıdır</p>
+    </footer>
+    
+    <script>
+        // Tab fonksiyonları
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        function openConceptTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.querySelectorAll("#ai-concepts .tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tabbuttons = document.querySelectorAll("#ai-concepts .tab-btn");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Oyun kodu
+        let playerScore = 0;
+        let aiScore = 0;
+        let gameHistory = [];
+        let aiPatterns = {};
+        
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            let aiChoice;
+            
+            // AI'nın seçimini belirle (öğrenme mekanizması)
+            if (gameHistory.length > 2) {
+                const lastTwo = gameHistory.slice(-2).join(',');
+                aiChoice = aiPatterns[lastTwo] || getCounterMove(choices[Math.floor(Math.random() * 3)]);
+            } else {
+                aiChoice = choices[Math.floor(Math.random() * 3)];
+            }
+            
+            // Sonucu belirle
+            let result;
+            if (playerChoice === aiChoice) {
+                result = "Berabere!";
+            } else if (
+                (playerChoice === 'rock' && aiChoice === 'scissors') ||
+                (playerChoice === 'paper' && aiChoice === 'rock') ||
+                (playerChoice === 'scissors' && aiChoice === 'paper')
+            ) {
+                result = "Kazandınız!";
+                playerScore++;
+            } else {
+                result = "Yapay zeka kazandı!";
+                aiScore++;
+            }
+            
+            // Oyun geçmişine ekle
+            gameHistory.push(playerChoice);
+            
+            // AI öğreniyor
+            if (gameHistory.length > 2) {
+                const pattern = gameHistory.slice(-3, -1).join(',');
+                aiPatterns[pattern] = getCounterMove(playerChoice);
+            }
+            
+            // Sonuçları göster
+            document.getElementById('game-result').innerHTML = `
+                Siz: ${translateChoice(playerChoice)} | Yapay Zeka: ${translateChoice(aiChoice)}<br>
+                <strong>${result}</strong>
+            `;
+            
+            document.getElementById('player-score').textContent = playerScore;
+            document.getElementById('ai-score').textContent = aiScore;
+            
+            // AI öğrenme durumunu güncelle
+            if (gameHistory.length > 5) {
+                document.getElementById('ai-learning').textContent = "Yapay zeka hamlelerinizi öğreniyor...";
+                if (gameHistory.length > 10) {
+                    document.getElementById('ai-learning').textContent = "Yapay zeka artık hamlelerinizi tahmin edebiliyor!";
+                }
+            }
+        }
+        
+        function getCounterMove(move) {
+            if (move === 'rock') return 'paper';
+            if (move === 'paper') return 'scissors';
+            return 'rock';
+        }
+        
+        function translateChoice(choice) {
+            const translations = {
+                'rock': 'Taş',
+                'paper': 'Kağıt',
+                'scissors': 'Makas'
+            };
+            return translations[choice];
+        }
+        
+        function resetGame() {
+            playerScore = 0;
+            aiScore = 0;
+            gameHistory = [];
+            aiPatterns = {};
+            document.getElementById('game-result').textContent = "Bir seçim yaparak oyuna başlayın!";
+            document.getElementById('player-score').textContent = "0";
+            document.getElementById('ai-score').textContent = "0";
+            document.getElementById('ai-learning').textContent = "Yapay zeka henüz öğreniyor...";
+        }
+        
+        // Sayfa yüklendiğinde AI partikülleri oluştur
+        window.onload = function() {
+            createParticles();
+        };
+        
+        function createParticles() {
+            const header = document.querySelector('header');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('ai-particle');
+                
+                const size = Math.random() * 10 + 5;
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 3;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.top = `${top}%`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                header.appendChild(particle);
+            }
+        }
+        
+        // Sinir ağı bağlantılarını oluştur
+        document.addEventListener('DOMContentLoaded', function() {
+            createNeuralConnections();
+        });
+        
+        function createNeuralConnections() {
+            const neuralNetwork = document.querySelector('.neural-network');
+            const layers = document.querySelectorAll('.layer');
+            
+            layers.forEach((layer, layerIndex) => {
+                if (layerIndex < layers.length - 1) {
+                    const nextLayer = layers[layerIndex + 1];
+                    const neurons = layer.querySelectorAll('.neuron');
+                    const nextNeurons = nextLayer.querySelectorAll('.neuron');
+                    
+                    neurons.forEach(neuron => {
+                        nextNeurons.forEach(nextNeuron => {
+                            const connection = document.createElement('div');
+                            connection.classList.add('connection');
+                            
+                            const startRect = neuron.getBoundingClientRect();
+                            const endRect = nextNeuron.getBoundingClientRect();
+                            
+                            const startX = startRect.left + startRect.width / 2 - neuralNetwork.getBoundingClientRect().left;
+                            const startY = startRect.top + startRect.height / 2 - neuralNetwork.getBoundingClientRect().top;
+                            const endX = endRect.left + endRect.width / 2 - neuralNetwork.getBoundingClientRect().left;
+                            const endY = endRect.top + endRect.height / 2 - neuralNetwork.getBoundingClientRect().top;
+                            
+                            const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+                            const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+                            
+                            connection.style.width = `${length}px`;
+                            connection.style.left = `${startX}px`;
+                            connection.style.top = `${startY}px`;
+                            connection.style.transform = `rotate(${angle}deg)`;
+                            
+                            neuralNetwork.appendChild(connection);
+                        });
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
